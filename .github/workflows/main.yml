@@ -1,0 +1,24 @@
+name: Ejecutar Selenium Diario
+
+on:
+  schedule:
+    - cron: "0 6 * * *"  # 1 AM en Colombia (Render usa UTC+0, así que 6 AM UTC = 1 AM Bogotá)
+  workflow_dispatch:  # Permite ejecutarlo manualmente
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar script
+        run: python main.py
