@@ -2,7 +2,7 @@ name: Ejecutar Selenium Diario
 
 on:
   schedule:
-    - cron: "20 0 * * *"  # 1 AM en Colombia (Render usa UTC+0, así que 6 AM UTC = 1 AM Bogotá)
+    - cron: "0 6 * * *"  # 1:00 AM en Bogotá (UTC-5 → 6:00 AM UTC) # 1 AM en Colombia (Render usa UTC+0, así que 6 AM UTC = 1 AM Bogotá)
   workflow_dispatch:  # Permite ejecutarlo manualmente
 
 jobs:
