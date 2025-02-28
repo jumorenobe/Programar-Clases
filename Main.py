@@ -116,11 +116,25 @@ try:
 
     # Seleccionar la opción "del segundo dia"
     select = Select(select_element)
-    select.select_by_value("2")
-    #seleccionar el horario de 4 y media
-    hora = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "Grid1ContainerRow_0008"))
+    opciones = []
+    for option in select.options:
+        valor = option.get_attribute("value")
+        
+        opciones.append(valor)
+    
+    select.select_by_value(opciones[1])
+    if opciones[1]=="7":
+        #seleccionar el horario de 3 el sabado
+        hora = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "Grid1ContainerRow_0006"))
     )
+    else:
+        
+        #seleccionar el horario de 4 y media
+        hora = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "Grid1ContainerRow_0008"))
+        )
+    
     hora.click()
     #confirmar
     confirmar = WebDriverWait(driver, 10).until(
