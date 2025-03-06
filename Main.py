@@ -132,7 +132,7 @@ try:
         
         #seleccionar el horario de 4 y media
         hora = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "Grid1ContainerRow_0008"))
+            EC.presence_of_element_located((By.ID, "Grid1ContainerRow_0006"))
         )
     
     hora.click()
